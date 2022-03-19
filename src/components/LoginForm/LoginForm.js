@@ -63,9 +63,9 @@ function LoginForm(props) {
       email: state.email,
       password: state.password,
     };
-    console.log(state.email);
-    console.log(state.authtoken);
-    console.log(state.piid);
+    // //console.log(state.email);
+    // //console.log(state.authtoken);
+    // //console.log(state.piid);
     if (state.authtoken.trim() == "" || state.piid.trim() == "") {
       showerr(true);
       showautherr(false);
@@ -88,7 +88,7 @@ function LoginForm(props) {
           }
         )
         .then(function (response) {
-          console.log(response.data);
+          // //console.log(response.data);
           if (response.data.code === 200) {
             const temp = response.data.data;
             var new_data = JSON.parse(localStorage.getItem("fileSystem"));
@@ -120,9 +120,9 @@ function LoginForm(props) {
                 md5("/SarvvidBox/" + temp[i] + "__file__")
               );
             }
-            console.log(new_data);
+            //console.log(new_data);
             localStorage.setItem("fileSystem", JSON.stringify(new_data));
-            console.log("dfuysdgfuysdgfuysdgfsdfsdyfsyfds HI I am IN");
+            //console.log("dfuysdgfuysdgfuysdgfsdfsdyfsyfds HI I am IN");
             setState((prevState) => ({
               ...prevState,
               successMessage: "Login successful. Redirecting to home page..",
@@ -137,7 +137,7 @@ function LoginForm(props) {
           }
         })
         .catch(function (error) {
-          console.log(error);
+          //console.log(error);
         });
     }
   };
@@ -225,7 +225,7 @@ function LoginForm(props) {
         },
       });
 
-      console.log("forgot pass resp...", resp);
+      //console.log("forgot pass resp...", resp);
 
       if (resp.data.code == 404) {
         alert(`No user found width this email ${userEmail}`);
@@ -235,7 +235,7 @@ function LoginForm(props) {
 
       setModalOpen(false);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
@@ -344,7 +344,7 @@ function LoginForm(props) {
           }
         )
           .then((res) => {
-            console.log("getdata...", res);
+            ////console.log("getdata...", res);
             props.setA(
               ((res.data.current_storage * res.data.filled_per) / 100).toFixed(
                 2
@@ -382,7 +382,6 @@ function LoginForm(props) {
               localStorage.setItem("total", 20 * 1000 * 1000 * 1000);
           });
 
-        console.log("dfuysdgfuysdgfuysdgfsdfsdyfsyfds HI I am IN");
         setState((prevState) => ({
           ...prevState,
           successMessage: "Login successful. Redirecting to home page..",
@@ -401,10 +400,10 @@ function LoginForm(props) {
         alert("User not verified. Check your email for verification.");
         throw "User not verified. Check your email for verification.";
       } else {
-        console.log("TRYING AGAIN<<<<<<<<<<<<<<");
+        ////console.log("TRYING AGAIN<<<<<<<<<<<<<<");
       }
     } catch (error) {
-      console.log("signup error...", error);
+      //console.log("signup error...", error);
       // if(resp.status === 409) {
       //   alert("User already exists. try to login or register with another email.")
       // } else if(resp.status === 401){
@@ -419,10 +418,10 @@ function LoginForm(props) {
     e.preventDefault();
 
     try {
-      console.log("login started...");
+      // //console.log("login started...");
 
-      console.log("user Pass...", userPass);
-      console.log("user Mail...", userEmail);
+      // //console.log("user Pass...", userPass);
+      // //console.log("user Mail...", userEmail);
 
       const resp = await axios({
         method: "post",
@@ -434,11 +433,11 @@ function LoginForm(props) {
         },
       });
 
-      console.log("login resp...", resp);
+      ////console.log("login resp...", resp);
 
       if (resp.status === 200) {
-        console.log("Logged in successfully");
-        console.log("file sytem...", resp.data.filesys);
+        // //console.log("Logged in successfully");
+        // //console.log("file sytem...", resp.data.filesys);
 
         localStorage.setItem("IMEI", resp.data.IMEI);
         localStorage.setItem("authtoken", resp.data.authtoken);
@@ -481,7 +480,7 @@ function LoginForm(props) {
             md5("/SarvvidBox/" + temp[i] + "__file__")
           );
         }
-        console.log(new_data);
+        ////console.log(new_data);
         if (new_fileSystem.length > 2) {
           localStorage.setItem("fileSystem", new_fileSystem);
           // setEntry(JSON.parse(new_fileSystem));
@@ -507,7 +506,7 @@ function LoginForm(props) {
           }
         )
           .then((res) => {
-            console.log("getdata...", res);
+            // //console.log("getdata...", res);
             props.setA(
               ((res.data.current_storage * res.data.filled_per) / 100).toFixed(
                 2
@@ -545,7 +544,6 @@ function LoginForm(props) {
               localStorage.setItem("total", 20 * 1000 * 1000 * 1000);
           });
 
-        console.log("dfuysdgfuysdgfuysdgfsdfsdyfsyfds HI I am IN");
         setState((prevState) => ({
           ...prevState,
           successMessage: "Login successful. Redirecting to home page..",
@@ -563,10 +561,8 @@ function LoginForm(props) {
         alert(resp.data.message);
         throw resp.data.message;
       } else {
-        console.log("TRYING AGAIN<<<<<<<<<<<<<<");
       }
     } catch (error) {
-      console.log("login error...", error);
       alert("Network error");
     }
   };
@@ -603,7 +599,7 @@ function LoginForm(props) {
     await splashControls.start("rotate");
     await splashControls.start("hidden");
     await logoControls.start("visible");
-    setSplashOpened(true); 
+    setSplashOpened(true);
     setCurrentScreen("signin");
   }
 
@@ -714,7 +710,9 @@ function LoginForm(props) {
 
                   <h3 style={{ marginTop: "25px" }}>
                     Forgot your password?{" "}
-                    <span onClick={() => setModalOpen(true)}>Click here</span>
+                    <span onClick={() => setCurrentScreen("forgotpass")}>
+                      Click here
+                    </span>
                   </h3>
 
                   <h3>
@@ -750,20 +748,80 @@ function LoginForm(props) {
                   className={"center loginbuttons"}
                   style={{ textAlign: "center" }}
                 >
-                  <button type="submit" onClick={(e) => {
-                    setCurrentScreen("signin");
-                    e.preventDefault();
-                  }}>
+                  <button
+                    type="submit"
+                    onClick={(e) => {
+                      setCurrentScreen("signin");
+                      e.preventDefault();
+                    }}
+                  >
                     Go Back
                   </button>
                 </div>
                 <div>
-                  <h3 style={{textAlign:"center"}}>To use SarvvidBox on your computer:</h3>
-                  <ul style={{listStyle: "none"}}>
-                    <li style={{textAlign:"center"}} >Open SarvvidBox on your phone</li>
-                    <li style={{textAlign:"center"}}>Tap Menu or Settings and select SarvvidBox Web</li>
-                    <li style={{textAlign:"center"}}>Point your phone to this screen to capture the code</li>
+                  <ul style={{ listStyle: "none" }}>
+                    <li style={{ textAlign: "center" }}>
+                      To use SarvvidBox on your computer:
+                    </li>
+                    <li style={{ textAlign: "center" }}>
+                      Open SarvvidBox on your phone
+                    </li>
+                    <li style={{ textAlign: "center" }}>
+                      Tap Menu or Settings and select SarvvidBox Web
+                    </li>
+                    <li style={{ textAlign: "center" }}>
+                      Point your phone to this screen to capture the code
+                    </li>
                   </ul>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className={`form-container ${
+                !(currentScreen === "forgotpass") && "hidden"
+              } forgotpass-container`}
+            >
+              <div className="form">
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    width: "100%",
+                  }}
+                >
+                  <h1>Forgot Password</h1>
+                </div>
+                <p className={"forgotpassheader"}>
+                  Enter your email to recieve a reset link
+                </p>
+                <input
+                  type="email"
+                  onChange={(e) => setUserEmail(e.target.value)}
+                />
+                <div
+                  className={"center loginbuttons"}
+                  style={{ textAlign: "center" }}
+                >
+                  <button
+                    type="Submit"
+                    onClick={(e) => {
+                      setCurrentScreen("signin");
+                      e.preventDefault();
+                    }}
+                  >
+                    Sign In
+                  </button>
+                  <button
+                    className="btn-md"
+                    onClick={(e) => {
+                      setCurrentScreen("signin");
+                      e.preventDefault();
+                    }}
+                  >
+                    Go back
+                  </button>
                 </div>
               </div>
             </div>
@@ -773,40 +831,6 @@ function LoginForm(props) {
           <img className={`${!splashOpened && "hidden"}`} src={sarvvidLogo} />
         </div>
       </div>
-
-      <Modal
-        open={modalOpen}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-      >
-        <div className="forgot-modal">
-          <div className="form">
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                width: "100%",
-              }}
-            >
-              <h1>Forgot Password</h1>
-              <CloseRoundedIcon
-                style={{ fontSize: "2rem", cursor: "pointer" }}
-                onClick={() => setModalOpen(false)}
-              />
-            </div>
-            <p>Email</p>
-            <input
-              type="email"
-              placeholder="Email"
-              onChange={(e) => setUserEmail(e.target.value)}
-            />
-            <button type="submit" onClick={(e) => forgotPassHandler(e)}>
-              Submit
-            </button>
-          </div>
-        </div>
-      </Modal>
     </div>
   );
 }
