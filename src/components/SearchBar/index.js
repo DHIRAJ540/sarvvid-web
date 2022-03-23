@@ -15,9 +15,10 @@ import "./styles.css"
 
 // New
 import searchIcon from '../../assets/img/search.svg';
+import searchDarkIcon from "../../assets/img/searchdark.svg"
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import MenuIcon from "@material-ui/icons/MenuRounded"
-import { useMenuToggle, useMenuUpdateToggle } from "../../contexts/themeContext"
+import { useMenuToggle, useMenuUpdateToggle, useTheme } from "../../contexts/themeContext"
 
 // import { makeStyles } from "@material-ui/core/styles";
 // const useStyles = makeStyles((theme) => ({
@@ -115,7 +116,7 @@ const SearchBar = (props) => {
 
   const toggleBtn = useMenuToggle()
   const toggleMenu = useMenuUpdateToggle()
-
+  const darkTheme = useTheme()
 
 
   useEffect(() => {
@@ -128,13 +129,13 @@ const SearchBar = (props) => {
   }
 
   return(
-    <div className="middlePane_searchBar" ref = {_ref} >
+    <div className={`middlePane_searchBar ${darkTheme ? "dark-theme" : ""}`} ref = {_ref} >
       <form  className="search_bar" noValidate autoComplete="off" style={{height: "100%"}} >
         <div className={`menu-btn ${toggleBtn ? "" : "opened"}`}  onClick = {() => toggleMenu()} >
           <MenuIcon style = {{fontSize:"2rem"}} />
         </div>
         <div className="search-section">
-          <img src={searchIcon} alt="search" />
+          {darkTheme ? <img src={searchDarkIcon} alt="search" /> : <img src={searchIcon} alt="search" />}
           <input  type="search" label = "Search" placeholder="Search" id="outlined-search" className={`searchBar_text ${toggleBtn ? "" : "opened"}`} onChange={(e) => {setTerm(e.target.value.toLowerCase())}} />
         </div>
       </form>

@@ -41,6 +41,12 @@
     border-radius: 10px;
   }
 
+.nav-container.dark-theme .back-btn{
+    box-shadow: 0;
+    border: none;
+    background: transparent;
+}
+
 /* Media */
 @media screen and (max-width: 768px) {
     .path-container{

@@ -32,13 +32,13 @@ const chartOptions = {
   slices: [
     {
       // color: "#2BB673",
-      color: "12adfd",
+      color: "#6a41ea",
       // color: "black",
       // color: "#0f0",
       // offset: 0.05,
     },
     {
-      color: "#66cfa4",
+      color: "#f8228d",
       // color: "black",
       // color: "#05e395",
       offset: 0.1,
@@ -189,6 +189,7 @@ const RightPane = (props) => {
     if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
+  
   let title = capitalize(
     props.location.pathname.substring(1, props.location.pathname.length)
   );

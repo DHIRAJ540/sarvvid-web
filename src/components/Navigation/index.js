@@ -6,6 +6,7 @@ import GoBack from './GoBack';
 
 // New
 import "./styles.css"
+import {useTheme} from "../../contexts/themeContext"
 
 const showPath = path => {
   const pathArr = path.split('/').filter(p => p);
@@ -31,8 +32,11 @@ const goBack = path => {
 };
 
 const Navigation = props => {
+
+  const darkTheme = useTheme()
+
   return (
-    <div className="nav-container">
+    <div className={`nav-container ${darkTheme ? "dark-theme" : ""}`}>
 
       <Container className='path-container' >
       <div

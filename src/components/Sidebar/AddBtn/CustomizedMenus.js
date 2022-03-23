@@ -21,7 +21,9 @@ import md5 from "md5";
 // New
 import KeyboardArrowDownRoundedIcon from '@material-ui/icons/KeyboardArrowDownRounded';
 import uploadIcon from "../../../assets/img/upload.svg"
+import uploadDarkIcon from "../../../assets/img/uploaddark.svg"
 import "./styles.css"
+import {useTheme} from "../../../contexts/themeContext"
 import { virgilCrypto } from "react-native-virgil-crypto"
 
 const StyledMenu = withStyles({
@@ -57,6 +59,9 @@ const StyledMenuItem = withStyles((theme) => ({
 }))(MenuItem);
 
 export default function CustomizedMenus(props) {
+
+  const darkTheme = useTheme();
+
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     getFilesFromEvent: (event) => myCustomFileGetter(event),
     // noDragEventsBubbling: true,
@@ -617,10 +622,10 @@ export default function CustomizedMenus(props) {
             
             onClick={handleClick}
             style={{ height: "60px", borderRadius: "60px", outline: "none",
-          background:"#fff", display:"flex", alignItems: "center", jusifyContent: "space-between", width:"200px" }}
+           display:"flex", alignItems: "center", jusifyContent: "space-between", width:"200px", background: `${darkTheme ? "#0d0d0d" : "#fff"}` }}
           >
-            {props.btnSize === "short" ? "" : <span style={{color:"rgb(25,25,25)", fontSize:"16px", marginRight:"1rem"}} >Upload</span>}
-          <img src={uploadIcon} alt="upload" />
+            {props.btnSize === "short" ? "" : <span style={{color:`${darkTheme ? "#fff" : "#333"}`, fontSize:"16px", marginRight:"1rem"}} >Upload</span>}
+          {darkTheme ? <img src={uploadDarkIcon} alt="upload" /> : <img src={uploadIcon} alt="upload" />}
             
           </Button>
         </div>

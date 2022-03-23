@@ -538,7 +538,7 @@ const Icon = (props) => {
   }
 
   return (
-    <Container ref={nodeRef} onClick={() => enterFolder()} style = {{background: `${darkTheme ? "#121212" : "#fff"}` }} className = "card-container"  >
+    <Container ref={nodeRef} onClick={() => enterFolder()}  className = {`card-container ${darkTheme ? "dark-theme" : ""}`}  >
     <div className="file-card">
       <div className="file-name">
         <Logo onClick={() => enterFolder()}>

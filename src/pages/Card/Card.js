@@ -12,6 +12,7 @@ import Icon from "../../components/Icon";
 import Add from "../../components/Add";
 import FolderIcon from "../../assets/img/folder-icon.png";
 import {useTheme} from "../../contexts/themeContext"
+import emptyIcon from "../../assets/img/empty.svg"
 
 // import FolderIcon from "../../assets/img/folder.png";
 // class Card extends Component {
@@ -96,13 +97,13 @@ const Card = (props) => {
   //   window.location.reload()
   // }, 2000)
 
-  
+  // props.entry[0]
 
 
   return (
-      
-            props.entry[0] ? 
-          <div className="midPane_cards" style = {{background: `${darkTheme ? "#121212" : "#fff"}` }} >
+      <div>
+           { props.entry[0] ? 
+          <div className={`midPane_cards ${darkTheme ? "dark-theme" : ""}`}  >
             
             <SEO
               url={props.match.url}
@@ -124,7 +125,20 @@ const Card = (props) => {
                 setEntry={(val) => props.setEntry(val)}
               />
             ))}
-          </div> : <div>hiii</div>
+          </div> : 
+          
+          <div className="show_empty_section" >
+            <img src={emptyIcon} alt="empty" />
+            <p>Feels empty over here, Upload some files 😉</p>
+            <div className="upload_card">
+              Upload your first file
+            </div>
+
+          </div> }
+                <div className="footer_msg" style={{marginTop:"2rem", color:"#acacac"}} >
+                  <p>Made for Web3. Made with love from bharat</p>
+                </div>
+          </div>
           
         );
 }
