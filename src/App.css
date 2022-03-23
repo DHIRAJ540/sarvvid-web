@@ -11,7 +11,7 @@
   align-items: center;
   /* background-color: var(--tertiary-color); */
   width: 100vw;
-  background-color: #fff;
+  background-color: #fafafa;
   /* background-color: var(--secondary-color); */
 }
 
@@ -23,7 +23,7 @@
 .Dashboard {
   height: 100%;
   width: 100%;
-  background-color: #fff;
+  background-color: #fafafa;
 
   display: flex;
   flex-direction: row;

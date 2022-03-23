@@ -344,7 +344,7 @@ function LoginForm(props) {
           }
         )
           .then((res) => {
-            ////console.log("getdata...", res);
+            console.log("getdata...", res);
             props.setA(
               ((res.data.current_storage * res.data.filled_per) / 100).toFixed(
                 2
