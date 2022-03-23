@@ -50,7 +50,7 @@ const Navigation = props => {
             
         }}
       >
-        <div className="back-btn">
+        <div className="button_depth">
           <GoBack
             fill={props.location.pathname === '/' ? '#acb9c3' : '#545B61'}
           />

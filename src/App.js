@@ -88,7 +88,7 @@ function App() {
     localStorage.setItem("theme", "light")
 
     Axios(
-      `http://14.102.108.122:3000/getdata?ping=${localStorage.getItem(
+      `https://api.sarvvid-ai.com/getdata?ping=${localStorage.getItem(
         "ping"
       )}`,
       {
