@@ -14,10 +14,10 @@ import {
 
 // New
 
-import moonIcon from '../assets/img/moon.svg'
-import sunIcon from "../assets/img/sun.svg"
-import gridIcon from "../assets/img/grid.svg"
-import gridDarkIcon from "../assets/img/griddark.svg"
+import moonIcon from "../assets/img/moon.svg";
+import sunIcon from "../assets/img/sun.svg";
+import gridIcon from "../assets/img/grid.svg";
+import gridDarkIcon from "../assets/img/griddark.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,8 +34,11 @@ const ViewFiles = () => {
   const classes = useStyles();
 
   return (
-
-    <div className={`middlePane ${toggleMenu ? "" : "opened"} ${darkTheme ? "dark-theme" : ""}` }  >
+    <div
+      className={`middlePane ${toggleMenu ? "" : "opened"} ${
+        darkTheme ? "dark-theme" : ""
+      }`}
+    >
       <div className="middlePane_upper">
         <SearchBar />
         <div
@@ -62,15 +65,15 @@ const ViewFiles = () => {
                 </span>
               </h2>
               <div style={{ display: "flex" }} className="button_depth">
-                <img style={{opacity:"0.5"}} src={gridIcon} alt="grid" />
+                {darkTheme ? (
+                  <img src={gridDarkIcon} alt="grid" />
+                ) : (
+                  <img style={{ opacity: "0.5" }} src={gridIcon} alt="grid" />
+                )}
               </div>
             </div>
 
             <Navigation />
-          </div>
-
-          <div className="layout-toggle">
-            {darkTheme ? <img src={gridDarkIcon} alt="grid" /> : <img src={gridIcon} alt="grid" />}
           </div>
         </div>
         <div className="table-header">
@@ -79,6 +82,12 @@ const ViewFiles = () => {
           <p>Type</p>
         </div>
         <Route path="*" component={Card} />
+        <div
+          className="footer_msg"
+          style={{ marginTop: "2rem", color: "#acacac" }}
+        >
+          <p>Made for Web3. Made with love from bharat</p>
+        </div>
       </div>
     </div>
   );

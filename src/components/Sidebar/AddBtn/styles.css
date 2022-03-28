@@ -3,7 +3,6 @@
   width: 206px;
   padding: 3px;
   border-radius: 100px;
-
   margin: auto;
 }
 
@@ -16,7 +15,7 @@
 .button-container span {
   font-family: "Poppins";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 18.2353px;
   line-height: 27px;
   display: flex;

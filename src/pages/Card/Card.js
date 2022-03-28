@@ -135,9 +135,7 @@ const Card = (props) => {
             </div>
 
           </div> }
-                <div className="footer_msg" style={{marginTop:"2rem", color:"#acacac"}} >
-                  <p>Made for Web3. Made with love from bharat</p>
-                </div>
+                
           </div>
           
         );

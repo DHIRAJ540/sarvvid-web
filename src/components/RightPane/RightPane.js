@@ -20,7 +20,13 @@ import axios from "axios";
 // New
 // import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 
-import AccountIcon from "../../assets/img/account.svg";
+import AccountIcon from "../../assets/img/sample_userimg.png";
+import UpgradeCircle20 from "../../assets/img/upgrade_circle_20.svg";
+import UpgradeCircle100 from "../../assets/img/upgrade_circle_100.svg";
+import UpgradeCircle200 from "../../assets/img/upgrade_circle_200.svg";
+import UpgradeCircle500 from "../../assets/img/upgrade_circle_500.svg";
+
+import RainbowShadow from "../../assets/img/rainbow_shadow.png";
 import LogoutIcon from "../../assets/img/logout.svg";
 import { useTheme } from "../../contexts/themeContext";
 import imgIcon from "../../assets/img/image.svg";
@@ -189,7 +195,7 @@ const RightPane = (props) => {
     if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
-  
+
   let title = capitalize(
     props.location.pathname.substring(1, props.location.pathname.length)
   );
@@ -311,19 +317,24 @@ const RightPane = (props) => {
     >
       <div className="rightPane_user">
         <div className="user_info">
-          <img src={AccountIcon} alt="account" />
           <div className="user_details">
-            <h3 style={{ color: `${darkTheme ? "#ccc" : "#121212"}` }}>
+            <h3 style={{ color: `${darkTheme ? "#ccc" : "#11243d"}` }}>
               {userName}
             </h3>
-            <h6 style={{ color: `${darkTheme ? "#aaa" : "#252525"}` }}>
+            <h6 style={{ color: `${darkTheme ? "#aaa" : "#acacac"}` }}>
               {localStorage.getItem("user_number")}
             </h6>
           </div>
+          <div className="user_avatar">
+            <img className="rainbow_shadow" src={RainbowShadow} alt="shadow" />
+            <img className="user_img" src={AccountIcon} alt="account" />
+          </div>
         </div>
       </div>
-      <hr />
-      <div className="rightPane_menu">
+      <div
+        style={{ background: `${darkTheme ? "#121212" : "#fff"}` }}
+        className="rightPane_menu"
+      >
         <div className="storage_detail">
           <div className="storage_detail_header">
             <div className="storage_detail_header1">
@@ -422,21 +433,36 @@ const RightPane = (props) => {
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
             className="upgrade_modal"
+            style={{ borderRadius: "40px" }}
           >
             <div className={classesUpgrade.paper}>
               <div className="div_upgrade_heading">
                 <h2 id="simple-modal-title" className="upgradeStorageHeading">
-                  Upgrade Storage
+                  Upgrade your decentralized cloud
                 </h2>
-                <hr style={{ borderTop: "1px solid rgba(0,179,255,0.3)" }} />
               </div>
               <div className="upgrade_plans_div">
                 <div className="upgrade_plan_div">
                   <div className="upgrade_plan_top">
-                    <p className="upgrade_plan_recommendation">&nbsp;</p>
-                    <p className="upgrade_plan_storage">20 GB</p>
-                    <p className="upgrade_plan_recommendation">Free</p>
-                    <p>&nbsp;</p>
+                    <h2>SarvvidBasic</h2>
+                    <h3>Free plan</h3>
+                  </div>
+                  <div className="upgrade_plan_mid">
+                    <img src={UpgradeCircle20} alt="SarvvidBasic" />
+                    <div className="upgrade_plan_mid_text">
+                      <p className="upgrade_plan_storage">20 GB</p>
+                    </div>
+                  </div>
+                  <div className="upgrade_plan_bottom">
+                    {/* features explainer */}
+                    <p style={{ margin: "2%" }}>Base Plan Includes:</p>
+                    <div className="upgrade_plan_description">
+                      <CheckRoundedIcon className="upgrade_plan_tick" />
+                      <span className="upgrade_plan_info">20 GB storage</span>
+                    </div>
+                  </div>
+                  <div className="upgrade_plan_cta">
+                    {/* button */}
                     {current_plan === 20 ? (
                       <button
                         type="button"
@@ -450,20 +476,155 @@ const RightPane = (props) => {
                         &#8377; 0/month
                       </button>
                     )}
+                    <p style={{fontSize:"12px"}}>*monthly plan</p>
                   </div>
-                  <hr />
+                </div>
+
+                <div className="upgrade_plan_div">
+                  <div className="upgrade_plan_top">
+                    <h2>SarvvidPlus</h2>
+                    <h3>Advanced plan</h3>
+                  </div>
+                  <div className="upgrade_plan_mid">
+                    <img src={UpgradeCircle100} alt="SarvvidPlus" />
+                    <div className="upgrade_plan_mid_text">
+                      <p className="upgrade_plan_storage">100 GB</p>
+                    </div>
+                  </div>
                   <div className="upgrade_plan_bottom">
+                    {/* features explainer */}
                     <p style={{ margin: "2%" }}>Base Plan Includes:</p>
                     <div className="upgrade_plan_description">
                       <CheckRoundedIcon className="upgrade_plan_tick" />
                       <span className="upgrade_plan_info">20 GB storage</span>
                     </div>
                   </div>
+                  <div className="upgrade_plan_cta">
+                  {current_plan === 100 ? (
+                      <button
+                        type="button"
+                        className="upgrade_plan_button"
+                        disabled={true}
+                      >
+                        Current Plan
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        className="upgrade_plan_button"
+                        onClick={(e) => displayRazorpay(e, 130)}
+                      >
+                        &#8377; 130/month
+                      </button>
+                    )}
+                    <p style={{fontSize:"12px"}}>*monthly plan</p>
+                  </div>
                 </div>
 
-                <div
+                <div className="upgrade_plan_div">
+                  <div className="upgrade_plan_top">
+                    <h2>SarvvidPro</h2>
+                    <h3>Pro plan</h3>
+                  </div>
+                  <div className="upgrade_plan_mid">
+                    <img src={UpgradeCircle200} alt="SarvvidPro" />
+                    <div className="upgrade_plan_mid_text">
+                      <p className="upgrade_plan_storage">200 GB</p>
+                    </div>
+                  </div>
+                  <div className="upgrade_plan_bottom">
+                    {/* features explainer */}
+                    <p style={{ margin: "2%" }}>Base Plan Includes:</p>
+                    <div className="upgrade_plan_description">
+                      <CheckRoundedIcon className="upgrade_plan_tick" />
+                      <span className="upgrade_plan_info">20 GB storage</span>
+                    </div>
+                  </div>
+                  <div className="upgrade_plan_cta">
+                  {current_plan === 200 ? (
+                      <button
+                        type="button"
+                        className="upgrade_plan_button"
+                        disabled={true}
+                      >
+                        Current Plan
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        className="upgrade_plan_button"
+                        onClick={(e) => displayRazorpay(e, 210)}
+                      >
+                        &#8377; 210/month
+                      </button>
+                    )}
+                    <p style={{fontSize:"12px"}}>*monthly plan</p>
+                  </div>
+                </div>
+
+
+                <div className="upgrade_plan_div">
+                  <div className="upgrade_plan_top">
+                    <h2>SarvvidMax</h2>
+                    <h3>Enterprise plan</h3>
+                  </div>
+                  <div className="upgrade_plan_mid">
+                    <img src={UpgradeCircle500} alt="SarvvidMax" />
+                    <div className="upgrade_plan_mid_text">
+                      <p className="upgrade_plan_storage">500 GB</p>
+                    </div>
+                  </div>
+                  <div className="upgrade_plan_bottom">
+                    {/* features explainer */}
+                    <p style={{ margin: "2%" }}>Max Plan Includes:</p>
+                    <div className="upgrade_plan_description">
+                      <CheckRoundedIcon className="upgrade_plan_tick" />
+                      <span className="upgrade_plan_info">100 GB storage</span>
+                    </div>
+                    <div className="upgrade_plan_description">
+                      <CheckRoundedIcon className="upgrade_plan_tick" />
+                      <span className="upgrade_plan_info">
+                        Access to Sarvvid experts
+                      </span>
+                    </div>
+                    <div className="upgrade_plan_description">
+                      <CheckRoundedIcon className="upgrade_plan_tick" />
+                      <span className="upgrade_plan_info">
+                        Option to add your family
+                      </span>
+                    </div>
+                    <div className="upgrade_plan_description">
+                      <CheckRoundedIcon className="upgrade_plan_tick" />
+                      <span className="upgrade_plan_info">
+                        Extra member benefits
+                      </span>
+                    </div>
+                  </div>
+                  <div className="upgrade_plan_cta">
+                  {current_plan === 500 ? (
+                      <button
+                        type="button"
+                        className="upgrade_plan_button"
+                        disabled={true}
+                      >
+                        Current Plan
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        className="upgrade_plan_button"
+                        onClick={(e) => displayRazorpay(e, 510)}
+                      >
+                        &#8377; 510/month
+                      </button>
+                    )}
+                    <p style={{fontSize:"12px"}}>*monthly plan</p>
+                  </div>
+                </div>
+
+                {/* <div
                   className="upgrade_plan_div"
-                  style={{ border: "5px solid rgb(0, 195, 255)" }}
+                  // style={{ border: "5px solid rgb(0, 195, 255)" }}
                 >
                   <div className="upgrade_plan_top">
                     <p className="upgrade_plan_recommendation">Recommended</p>
@@ -515,6 +676,7 @@ const RightPane = (props) => {
                     </div>
                   </div>
                 </div>
+
                 <div className="upgrade_plan_div">
                   <div className="upgrade_plan_top">
                     <p className="upgrade_plan_recommendation">&nbsp;</p>
@@ -617,7 +779,7 @@ const RightPane = (props) => {
                       </span>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </Modal>
