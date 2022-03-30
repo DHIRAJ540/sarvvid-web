@@ -1,8 +1,8 @@
 .leftContainer {
   
   height: 100%;
-  min-width: 320px;
-  max-width: 320px;
+  min-width: 300px;
+  max-width: 15%;
   text-align: left;
   /* background: #343951; */
   background-color: rgb(255, 255, 255);
@@ -277,6 +277,11 @@
   opacity: 1;
 }
 
+.close-toggle-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 .logout-btn h3{
@@ -321,7 +326,7 @@
 }
 
 
-@media (min-width:768px) {
+@media (min-width:1000px) {
   .close-toggle-btn{
     display: none;
   }
@@ -329,13 +334,27 @@
   
 }
 
-@media (max-width:768px) {
+@media (max-width:1000px) {
   .leftContainer{
     transform: translateX(-100%);
   }
 
   .leftContainer.opened{
     transform: translateX(0%);
+    
+  }
+
+  .left-header{
+    justify-content: space-between;
+    padding: 0 2%;
+  }
+
+  .leftPane_new{
+    display: none;
+  }
+
+  .leftPane{
+    padding-top: 0rem;
     
   }
 

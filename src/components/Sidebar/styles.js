@@ -11,7 +11,7 @@ export const SideBarContainer = styled.section`
     text-decoration: none;
   }
   transition: margin-left 250ms ease-in;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1000px) {
     margin-left: ${(props) => (props.toggle ? "-320px" : "0")};
   }
 `;
@@ -28,7 +28,7 @@ export const ShowMenu = styled.div`
   display: none;
   z-index: 2000;
   cursor: pointer;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1000px) {
     display: block;
   }
 `;

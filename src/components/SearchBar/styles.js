@@ -50,7 +50,7 @@ export const Input = styled.div`
       color: #afb2b6;
     }
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1000px) {
     width: 100%;
     margin-top: 20px;
   }

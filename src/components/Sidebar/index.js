@@ -63,6 +63,7 @@ const useFileRequestStyles = makeStyles((theme) => ({
 }));
 
 const Sidebar = ({ fileStructure, ...props }) => {
+
   let children = fileStructure[0].children;
   const [toggle, handleToggle] = useState(true);
   const [sideDrawerToggle, setSideDrawerToggle] = useState(true);
@@ -107,11 +108,12 @@ const Sidebar = ({ fileStructure, ...props }) => {
           <img className="sarvvid_logo" src={sarvvid} alt="Sarvvid AI"></img>
         )}
         <div className="close-toggle-btn">
-          <CloseIcon onClick={() => toggleMenuHandler()} />
+            <CloseIcon onClick = {() => toggleMenuHandler()} style = {{color:`${darkTheme ? "#fff" : "#333"}`, fontSize:"2rem"}} />
         </div>
       </div>
       <div className="leftPane">
         <div className="leftPane_buttons">
+
           <div className="leftPane_new">
             <CustomizedMenus
               btnSize="long"

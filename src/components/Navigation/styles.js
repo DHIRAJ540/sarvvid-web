@@ -5,7 +5,7 @@ export const Container = styled.div`
   margin-left: 4%;
   display: flex;
   
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1000px) {
     width: 100%;
   }
 `;

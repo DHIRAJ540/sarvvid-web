@@ -17,8 +17,11 @@ import "./styles.css"
 import searchIcon from '../../assets/img/search.svg';
 import searchDarkIcon from "../../assets/img/searchdark.svg"
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
+import sarvvidLogoDark from "../../assets/img/sarvvidLogodark.svg"
+import sunImg from "../../assets/img/sun.svg"
+import moonImg from "../../assets/img/moon.svg"
 import MenuIcon from "@material-ui/icons/MenuRounded"
-import { useMenuToggle, useMenuUpdateToggle, useTheme } from "../../contexts/themeContext"
+import { useMenuToggle, useMenuUpdateToggle, useTheme, useThemeUpdate } from "../../contexts/themeContext"
 
 // import { makeStyles } from "@material-ui/core/styles";
 // const useStyles = makeStyles((theme) => ({
@@ -117,6 +120,7 @@ const SearchBar = (props) => {
   const toggleBtn = useMenuToggle()
   const toggleMenu = useMenuUpdateToggle()
   const darkTheme = useTheme()
+  const toggleTheme = useThemeUpdate()
 
 
   useEffect(() => {
@@ -130,13 +134,24 @@ const SearchBar = (props) => {
 
   return(
     <div className={`middlePane_searchBar ${darkTheme ? "dark-theme" : ""}`} ref = {_ref} >
-      <form  className="search_bar" noValidate autoComplete="off" style={{height: "100%"}} >
+      <div className="mobile_header">
         <div className={`menu-btn ${toggleBtn ? "" : "opened"}`}  onClick = {() => toggleMenu()} >
-          <MenuIcon style = {{fontSize:"2rem"}} />
+          <MenuIcon style = {{fontSize:"2rem", color:`${darkTheme? "#fafafa" : "#000"}`}}  />
         </div>
+        <div className="min_logo">
+          <img src={sarvvidLogoDark} alt="logo"/>
+        </div>
+        <div className={`min-theme-toggle ${darkTheme ? "dark" : ""}`} onClick={() => toggleTheme()} >
+          <div className="min_theme_toggle">
+            <img src={moonImg} alt="mooon" />
+            <img src={sunImg} alt="sun" />
+          </div>
+        </div>
+      </div>
+      <form  className="search_bar" noValidate autoComplete="off" style={{height: "100%"}} >
         <div className="search-section">
           {darkTheme ? <img src={searchDarkIcon} alt="search" /> : <img src={searchIcon} alt="search" />}
-          <input  type="search" label = "Search" placeholder="Search" id="outlined-search" className={`searchBar_text ${toggleBtn ? "" : "opened"}`} onChange={(e) => {setTerm(e.target.value.toLowerCase())}} />
+          <input  type="search" label = "Search" placeholder="Search" id="outlined-search" className={`searchBar_text ${toggleBtn ? "" : "opened"} ${darkTheme ? "dark" : ""}`} onChange={(e) => {setTerm(e.target.value.toLowerCase())}} />
         </div>
       </form>
       {term.length > 0 ? (
