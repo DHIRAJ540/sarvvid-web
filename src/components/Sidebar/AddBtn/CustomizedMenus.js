@@ -17,14 +17,13 @@ import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import md5 from "md5";
 
-
 // New
-import KeyboardArrowDownRoundedIcon from '@material-ui/icons/KeyboardArrowDownRounded';
-import uploadIcon from "../../../assets/img/upload.svg"
-import uploadDarkIcon from "../../../assets/img/uploaddark.svg"
-import "./styles.css"
-import {useTheme} from "../../../contexts/themeContext"
-import { virgilCrypto } from "react-native-virgil-crypto"
+import KeyboardArrowDownRoundedIcon from "@material-ui/icons/KeyboardArrowDownRounded";
+import uploadIcon from "../../../assets/img/upload.svg";
+import uploadDarkIcon from "../../../assets/img/uploaddark.svg";
+import "./styles.css";
+import { useTheme } from "../../../contexts/themeContext";
+import { virgilCrypto } from "react-native-virgil-crypto";
 
 const StyledMenu = withStyles({
   paper: {
@@ -50,7 +49,7 @@ const StyledMenuItem = withStyles((theme) => ({
   root: {
     "&:hover": {
       backgroundColor: "rgba(92, 197, 188, 0.4)",
-      transition: "all 0.5s ease"
+      transition: "all 0.5s ease",
       // "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
       //   color: theme.palette.common.white,
       // },
@@ -59,7 +58,6 @@ const StyledMenuItem = withStyles((theme) => ({
 }))(MenuItem);
 
 export default function CustomizedMenus(props) {
-
   const darkTheme = useTheme();
 
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
@@ -127,11 +125,9 @@ export default function CustomizedMenus(props) {
     //   "secret"
     // )
 
-    formData.append("filedata", document[0]  );
+    formData.append("filedata", document[0]);
 
-
-
-    console.log("upload file data...", document[0])
+    console.log("upload file data...", document[0]);
     let string;
     string = {};
     string[document[0].name] = {
@@ -154,7 +150,7 @@ export default function CustomizedMenus(props) {
     console.log("fsdfsdddddddddddddddDDDDDDDD", at);
     axios({
       method: "post",
-      url: `http://14.102.108.122:3000/upload?ping=${localStorage.getItem(
+      url: `https://api.sarvvid-ai.com/upload?ping=${localStorage.getItem(
         "ping"
       )}`,
       headers: {
@@ -182,7 +178,7 @@ export default function CustomizedMenus(props) {
     })
       .then((response) => {
         if (response.data.newtoken) {
-          console.log("New auth token...",response.data.newtoken);
+          console.log("New auth token...", response.data.newtoken);
           localStorage.setItem("authtoken", response.data.newtoken);
           setDisableUploadButton(false);
           const values = {
@@ -195,8 +191,8 @@ export default function CustomizedMenus(props) {
 
           const pid = md5(props.currentpath + FOLDER);
 
-          console.log("pid...", pid, "   current path...", props)
-          console.log(data[pid])
+          console.log("pid...", pid, "   current path...", props);
+          console.log(data[pid]);
 
           var newEntry = {};
           newEntry.parentPath = props.currentpath;
@@ -239,7 +235,7 @@ export default function CustomizedMenus(props) {
           localStorage.setItem("fileSystem", JSON.stringify(data));
           axios({
             method: "post",
-            url: "http://14.102.108.122:3000/updatefileSystem",
+            url: "https://api.sarvvid-ai.com/updatefileSystem",
             headers: {
               "Content-type": "application/json",
               authtoken: localStorage.getItem("authtoken"),
@@ -250,7 +246,7 @@ export default function CustomizedMenus(props) {
             },
           }).then((response) => {
             if (response.success) {
-              console.log("Update file system is completed",response.success);
+              console.log("Update file system is completed", response.success);
             }
           });
           props.setEntry(data);
@@ -267,7 +263,7 @@ export default function CustomizedMenus(props) {
           console.log("updated used value=======>>", val);
           axios({
             method: "post",
-            url: `http://14.102.108.122:3000/updatedata?ping=${localStorage.getItem(
+            url: `https://api.sarvvid-ai.com/updatedata?ping=${localStorage.getItem(
               "ping"
             )}`,
             headers: {
@@ -285,9 +281,12 @@ export default function CustomizedMenus(props) {
           }).then((response) => {
             if ("code" in response.data && response.data.code === 200) {
               console.log("Success======>>", response.data.success);
-              console.log("upload response...", response.data)
-              localStorage.setItem("filled_per", response.data.storageFilled)
-              localStorage.setItem("remaining_per", response.data.storageRemain)
+              console.log("upload response...", response.data);
+              localStorage.setItem("filled_per", response.data.storageFilled);
+              localStorage.setItem(
+                "remaining_per",
+                response.data.storageRemain
+              );
             } else {
               console.log(response.data.notsecure);
             }
@@ -301,7 +300,7 @@ export default function CustomizedMenus(props) {
         }
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
         console.log("Server is up for maintenance");
         alert("Server is up for maintenance. Please Try After Some Time");
         setDisableUploadButton(false);
@@ -346,7 +345,7 @@ export default function CustomizedMenus(props) {
     console.log("fsdfsdddddddddddddddDDDDDDDD", at);
     axios({
       method: "post",
-      url: `http://14.102.108.122:3000/upload?ping=${localStorage.getItem(
+      url: `https://api.sarvvid-ai.com/upload?ping=${localStorage.getItem(
         "ping"
       )}`,
       headers: {
@@ -417,13 +416,12 @@ export default function CustomizedMenus(props) {
 
           var dic = {};
           var folder = {};
-          if(props.currentpath.length > 1){
-            var currentpath = props.currentpath + '/' + newEntry.name
-          }
-          else{
+          if (props.currentpath.length > 1) {
+            var currentpath = props.currentpath + "/" + newEntry.name;
+          } else {
             var currentpath = props.currentpath + newEntry.name;
           }
-         
+
           var currentid = id;
           console.log(currentpath);
           let k = 0;
@@ -509,7 +507,7 @@ export default function CustomizedMenus(props) {
           localStorage.setItem("fileSystem", JSON.stringify(data));
           axios({
             method: "post",
-            url: "http://14.102.108.122:3000/updatefileSystem",
+            url: "https://api.sarvvid-ai.com/updatefileSystem",
             headers: {
               "Content-type": "application/json",
               authtoken: localStorage.getItem("authtoken"),
@@ -536,7 +534,7 @@ export default function CustomizedMenus(props) {
           console.log("updated used value=======>>", val);
           axios({
             method: "post",
-            url: `http://14.102.108.122:3000/updatedata?ping=${localStorage.getItem(
+            url: `https://api.sarvvid-ai.com/updatedata?ping=${localStorage.getItem(
               "ping"
             )}`,
             headers: {
@@ -554,9 +552,12 @@ export default function CustomizedMenus(props) {
           }).then((response) => {
             if ("code" in response.data && response.data.code === 200) {
               console.log("Success======>>", response.data.success);
-              console.log("upload response...", response.data)
-              localStorage.setItem("filled_per", response.data.storageFilled)
-              localStorage.setItem("remaining_per", response.data.storageRemain)
+              console.log("upload response...", response.data);
+              localStorage.setItem("filled_per", response.data.storageFilled);
+              localStorage.setItem(
+                "remaining_per",
+                response.data.storageRemain
+              );
             } else {
               console.log(response.data.notsecure);
             }
@@ -570,7 +571,7 @@ export default function CustomizedMenus(props) {
         }
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
         console.log("Server is up for maintenance");
         alert("Server is up for maintenance. Please Try After Some Time");
         setDisableUploadButton(false);
@@ -582,7 +583,7 @@ export default function CustomizedMenus(props) {
         selectedfiles([]);
       });
   };
-  
+
   useEffect(() => {
     if (document.length > 0) {
       onFileUpload();
@@ -611,22 +612,47 @@ export default function CustomizedMenus(props) {
           }}
         >
           {props.btnSize === "short" ? "" : <span>Create New&nbsp;</span>}
-          <KeyboardArrowDownRoundedIcon style={{ color: "#00b3ff", fontSize: "30px" }} />
+          <KeyboardArrowDownRoundedIcon
+            style={{ color: "#00b3ff", fontSize: "30px" }}
+          />
         </Button>
       ) : (
         <div className="button-container">
           <Button
             aria-controls="customized-menu"
             aria-haspopup="true"
-            
-            
             onClick={handleClick}
-            style={{ height: "60px", borderRadius: "60px", outline: "none",
-           display:"flex", alignItems: "center", jusifyContent: "space-between", width:"200px", background: `${darkTheme ? "#0d0d0d" : "#fff"}` }}
+            style={{
+              
+              height: "60px",
+              borderRadius: "60px",
+              outline: "none",
+              display: "flex",
+              alignItems: "center",
+              jusifyContent: "space-between",
+              width: "200px",
+              textTransform: "Initial",
+              background: `${darkTheme ? "#0d0d0d" : "#fff"}`,
+            }}
           >
-            {props.btnSize === "short" ? "" : <span style={{color:`${darkTheme ? "#fff" : "#333"}`, fontSize:"16px", marginRight:"1rem"}} >Upload</span>}
-          {darkTheme ? <img src={uploadDarkIcon} alt="upload" /> : <img src={uploadIcon} alt="upload" />}
-            
+            {props.btnSize === "short" ? (
+              ""
+            ) : (
+              <span
+                style={{
+                  color: `${darkTheme ? "#fff" : "#333"}`,
+                  fontSize: "16px",
+                  marginRight: "1rem",
+                }}
+              >
+                Upload
+              </span>
+            )}
+            {darkTheme ? (
+              <img src={uploadDarkIcon} alt="upload" />
+            ) : (
+              <img src={uploadIcon} alt="upload" />
+            )}
           </Button>
         </div>
       )}
@@ -640,20 +666,25 @@ export default function CustomizedMenus(props) {
           handleClose();
         }}
       >
-        <StyledMenuItem style={{ width: "min-content", margin: "0%", cusor:"pointer" }}>
+        <StyledMenuItem
+          style={{ width: "min-content", margin: "0%", cusor: "pointer" }}
+        >
           <label
             htmlFor="filePicker"
             style={{
               display: "flex",
               flexDirection: "row",
               marginBottom: "0",
-              backgorund:"green"
+              backgorund: "green",
             }}
           >
             <ListItemIcon>
-              <InsertDriveFileIcon  style = {{cusor:"pointer"}} />
+              <InsertDriveFileIcon style={{ cusor: "pointer" }} />
             </ListItemIcon>
-            <ListItemText primary="Upload File&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" style = {{cusor:"pointer"}} />
+            <ListItemText
+              primary="Upload File&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+              style={{ cusor: "pointer" }}
+            />
           </label>
           <input
             id="filePicker"

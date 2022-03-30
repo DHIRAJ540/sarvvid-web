@@ -265,10 +265,10 @@
   align-items: center;
   justify-content: center;
   
-  margin: auto;
+  margin: 1.5rem;
   opacity: 0.36;
   cursor: pointer;
-  
+  width: 100%;
   transition: all 300ms ease ;
 
 }
@@ -290,11 +290,19 @@
   font-size: 1.3rem;
 }
 
+.logout-btn img{
+  width: 18px;
+  height: 18px;
+
+}
+
 .logout-section{
   width: 80%;
   margin: 0 auto;
-  border-top: 2px solid #c4c4c4;
+  border-top: 2px solid #fafafa;
   padding: 2rem;
+  position: absolute;
+  bottom: 0px;
 }
 
 .leftContainer.dark-theme{

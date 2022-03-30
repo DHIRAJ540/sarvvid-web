@@ -1,15 +1,26 @@
-.button-container{
-    background: linear-gradient(#31FFAD, #10ADFE);
-    width: 206px;
-    padding: 3px;
-    border-radius: 100px;
-    
-    margin: auto;
-
+.button-container {
+  background: linear-gradient(#31ffad, #10adfe);
+  width: 206px;
+  padding: 3px;
+  border-radius: 100px;
+  margin: auto;
 }
 
-.logout-section{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.logout-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button-container span {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18.2353px;
+  line-height: 27px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #000000;
 }
