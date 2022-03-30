@@ -15,6 +15,117 @@
   transition: all 300ms ease-in-out;
 }
 
+.requestFiles {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .rainbow_shadow {
+  position: relative;
+  top: 0;
+  left: 0;
+   align-content: center; 
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  width: 69px;
+  height: 103px;
+} 
+*/
+/* .user_avatar {
+  position: relative;
+  display: flex;
+  top: 0;
+  left: 0;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+} */
+
+.requestFilesMascot1 {
+  position: relative;
+  top: 0;
+  left: 150px;  /* align-content: center; */
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.requestFilesMascot2 {
+  position: relative;
+  top: 0;
+  left: -150px;  /* align-content: center; */
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.requestFiles_content {
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  display: flex;
+  width: 100%;
+  /* height: 100%; */
+  
+}
+
+
+.requestFiles h3 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 33px;
+  letter-spacing: -0.01em;
+
+  /* sarvvidblack */
+
+  color: #000000;
+}
+
+
+
+.requestFiles p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  letter-spacing: -0.01em;
+
+  /* sarvvidgrey */
+
+  color: #999999;
+}
+
+.requestFiles_btn {
+  width: 30%;
+  background: #000;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  font-size: 0.8rem;
+  font-weight: normal;
+  font-family: "Poppins";
+  border-radius: 10px;
+  cursor: pointer;
+  text-transform: none;
+  margin: 0;
+  padding: 1.2rem 1rem;
+  transition: all 0.3s ease;
+}
+
 .middlePane_searchBar {
   width: 90%;
   transition: all 300ms ease-in-out;
@@ -52,6 +163,21 @@
 }
 
 .middlePane_cards {
+  /* height: 30%; */
+  margin-top: 4%;
+  transition: all 300ms ease;
+  background: rgb(255, 255, 255);
+  box-shadow: 0px 10px 60px rgba(226, 236, 249, 0.5);
+  border-radius: 30px;
+  height: 60vh;
+
+  padding: 2rem;
+  transition: all 300ms ease-in-out;
+
+  /* margin-bottom: 1%; */
+  /* border: 1px solid red; */
+}
+.middlePane_cards_request {
   /* height: 30%; */
   margin-top: 4%;
   transition: all 300ms ease;
@@ -196,33 +322,6 @@
 
 .middlePane.dark-theme .middlePane_cards {
   box-shadow: 0px 10px 60px rgba(1, 36, 158, 0.5);
-}
-
-.dropzone_header {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 21px;
-  text-align: center;
-  letter-spacing: -0.01em;
-
-  /* sarvvidgrey */
-
-  color: #999999;
-}
-.dropzone_p {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 10px;
-  line-height: 15px;
-  text-align: center;
-  letter-spacing: -0.01em;
-
-  /* sarvvidgrey */
-
-  color: #999999;
 }
 
 /* meida */

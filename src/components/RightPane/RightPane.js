@@ -131,11 +131,11 @@ const RightPane = (props) => {
 
     setUsedStorageGb(totalStorage - remainingGB);
 
-    console.log("usedstorage...", usedStorage);
-    console.log("unusedstorage...", unusedStorage);
-    console.log("remainingGB...", remainingGB.toFixed(2));
-    console.log("totalStorage...", totalStorage);
-    console.log("usedStorageGb...", usedStorageGb.toFixed(2));
+    // console.log("usedstorage...", usedStorage);
+    // console.log("unusedstorage...", unusedStorage);
+    // console.log("remainingGB...", remainingGB.toFixed(2));
+    // console.log("totalStorage...", totalStorage);
+    // console.log("usedStorageGb...", usedStorageGb.toFixed(2));
   });
 
   // useEffect(() => {
@@ -621,165 +621,6 @@ const RightPane = (props) => {
                     <p style={{fontSize:"12px"}}>*monthly plan</p>
                   </div>
                 </div>
-
-                {/* <div
-                  className="upgrade_plan_div"
-                  // style={{ border: "5px solid rgb(0, 195, 255)" }}
-                >
-                  <div className="upgrade_plan_top">
-                    <p className="upgrade_plan_recommendation">Recommended</p>
-                    <p className="upgrade_plan_storage">100 GB</p>
-                    <p className="upgrade_plan_recommendation">&nbsp;</p>
-                    <p>&nbsp;</p>
-                    {current_plan === 100 ? (
-                      <button
-                        type="button"
-                        className="upgrade_plan_button"
-                        disabled={true}
-                      >
-                        Current Plan
-                      </button>
-                    ) : (
-                      <button
-                        type="button"
-                        style={{ color: "white", background: "#00b3ff" }}
-                        className="upgrade_plan_button"
-                      >
-                        &#8377; 130/month
-                      </button>
-                    )}
-                  </div>
-                  <hr />
-                  <div className="upgrade_plan_bottom">
-                    <p style={{ margin: "2%" }}>Advanced Plan Includes:</p>
-                    <div className="upgrade_plan_description">
-                      <CheckRoundedIcon className="upgrade_plan_tick" />
-                      <span className="upgrade_plan_info">100 GB storage</span>
-                    </div>
-                    <div className="upgrade_plan_description">
-                      <CheckRoundedIcon className="upgrade_plan_tick" />
-                      <span className="upgrade_plan_info">
-                        Access to Sarvvid experts
-                      </span>
-                    </div>
-                    <div className="upgrade_plan_description">
-                      <CheckRoundedIcon className="upgrade_plan_tick" />
-                      <span className="upgrade_plan_info">
-                        Option to add your family
-                      </span>
-                    </div>
-                    <div className="upgrade_plan_description">
-                      <CheckRoundedIcon className="upgrade_plan_tick" />
-                      <span className="upgrade_plan_info">
-                        Extra member benefits
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="upgrade_plan_div">
-                  <div className="upgrade_plan_top">
-                    <p className="upgrade_plan_recommendation">&nbsp;</p>
-                    <p className="upgrade_plan_storage">200 GB</p>
-                    <p className="upgrade_plan_recommendation">&nbsp;</p>
-                    <p>&nbsp;</p>
-                    {current_plan === 200 ? (
-                      <button
-                        type="button"
-                        className="upgrade_plan_button"
-                        disabled={true}
-                      >
-                        Current Plan
-                      </button>
-                    ) : (
-                      <button
-                        type="button"
-                        className="upgrade_plan_button"
-                        onClick={(e) => displayRazorpay(e, 210)}
-                      >
-                        &#8377; 210/month
-                      </button>
-                    )}
-                  </div>
-                  <hr />
-                  <div className="upgrade_plan_bottom">
-                    <p style={{ margin: "2%" }}>Pro Plan Includes:</p>
-                    <div className="upgrade_plan_description">
-                      <CheckRoundedIcon className="upgrade_plan_tick" />
-                      <span className="upgrade_plan_info">200 GB storage</span>
-                    </div>
-                    <div className="upgrade_plan_description">
-                      <CheckRoundedIcon className="upgrade_plan_tick" />
-                      <span className="upgrade_plan_info">
-                        Access to Sarvvid experts
-                      </span>
-                    </div>
-                    <div className="upgrade_plan_description">
-                      <CheckRoundedIcon className="upgrade_plan_tick" />
-                      <span className="upgrade_plan_info">
-                        Option to add your family
-                      </span>
-                    </div>
-                    <div className="upgrade_plan_description">
-                      <CheckRoundedIcon className="upgrade_plan_tick" />
-                      <span className="upgrade_plan_info">
-                        Extra member benefits
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="upgrade_plan_div">
-                  <div className="upgrade_plan_top">
-                    <p className="upgrade_plan_recommendation">&nbsp;</p>
-                    <p className="upgrade_plan_storage">500 GB</p>
-                    <p className="upgrade_plan_recommendation">&nbsp;</p>
-                    <p>&nbsp;</p>
-                    {current_plan === 500 ? (
-                      <button
-                        type="button"
-                        className="upgrade_plan_button"
-                        disabled={true}
-                      >
-                        Current Plan
-                      </button>
-                    ) : (
-                      <button
-                        type="button"
-                        className="upgrade_plan_button"
-                        onClick={(e) => displayRazorpay(e, 530)}
-                      >
-                        &#8377; 530/month
-                      </button>
-                    )}
-                  </div>
-                  <hr />
-                  <div className="upgrade_plan_bottom">
-                    <p style={{ margin: "2%" }}>Advanced Plan Includes:</p>
-                    <div className="upgrade_plan_description">
-                      <CheckRoundedIcon className="upgrade_plan_tick" />
-                      <span className="upgrade_plan_info">500 GB storage</span>
-                    </div>
-                    <div className="upgrade_plan_description">
-                      <CheckRoundedIcon className="upgrade_plan_tick" />
-                      <span className="upgrade_plan_info">
-                        Access to Sarvvid experts
-                      </span>
-                    </div>
-                    <div className="upgrade_plan_description">
-                      <CheckRoundedIcon className="upgrade_plan_tick" />
-                      <span className="upgrade_plan_info">
-                        Option to add your family
-                      </span>
-                    </div>
-                    <div className="upgrade_plan_description">
-                      <CheckRoundedIcon className="upgrade_plan_tick" />
-                      <span className="upgrade_plan_info">
-                        Extra member benefits
-                      </span>
-                    </div>
-                  </div>
-                </div> */}
               </div>
             </div>
           </Modal>
