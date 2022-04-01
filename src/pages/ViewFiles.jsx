@@ -86,6 +86,7 @@ const ViewFiles = () => {
     setDropDone(true);
     if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
       dragCounter.current = 0;
+      console.log("handleDrop>>>>>>>>>");
       console.log(event.dataTransfer.files);
       event.dataTransfer.clearData();
     }
@@ -192,9 +193,7 @@ const ViewFiles = () => {
               </div>
             ) : (
               <div className="drag-over">
-              
-                {
-                  setTimeout(function () {
+                {setTimeout(function () {
                   console.log("timeout");
                   setOpenDragnDrop(false);
                   setDropDone(false);

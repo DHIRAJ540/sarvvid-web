@@ -555,15 +555,18 @@ function LoginForm(props) {
 
         window.location.reload();
       } else if (resp.status === 206) {
-        alert(resp.data.message);
+        setCurrentScreen("loginerror");
+        // alert(resp.data.message);
         throw resp.data.message;
       } else if (resp.data.code === 401) {
-        alert(resp.data.message);
+        setCurrentScreen("loginerror");
+        // alert(resp.data.message);
         throw resp.data.message;
       } else {
       }
     } catch (error) {
-      alert("Network error");
+      // alert("Network error");
+      setCurrentScreen("loginerror");
     }
   };
 
@@ -601,6 +604,7 @@ function LoginForm(props) {
     await logoControls.start("visible");
     setSplashOpened(true);
     setCurrentScreen("signin");
+    //setCurrentScreen("loginerror");
   }
 
   return (
@@ -821,6 +825,46 @@ function LoginForm(props) {
                     }}
                   >
                     Go back
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className={`form-container ${
+                !(currentScreen === "loginerror") && "hidden"
+              } loginerror-container`}
+            >
+              <div className="form">
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    width: "100%",
+                  }}
+                >
+                  <h1>Oops</h1>
+                </div>
+                <p className={"forgotpassheader"}>
+                  We are having issue logging you in
+                </p>
+                <p className={"forgotpassheader"}>
+                  Make sure the username/password is correct{" "}
+                </p>
+
+                <div
+                  className={"center loginbuttons"}
+                  style={{ textAlign: "center" }}
+                >
+                  <button
+                    type="Submit"
+                    onClick={(e) => {
+                      setCurrentScreen("signin");
+                      e.preventDefault();
+                    }}
+                  >
+                    Try Again
                   </button>
                 </div>
               </div>

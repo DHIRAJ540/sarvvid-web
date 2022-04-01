@@ -70,7 +70,6 @@
   position: relative;
   top: 0;
   left: 0;
-  /* align-content: center; */
   align-content: center;
   align-items: center;
   justify-content: center;
@@ -186,6 +185,7 @@
   text-align: start;
   margin: 0;
 }
+
 .storage_total {
   right: 15.5%;
   position: relative;

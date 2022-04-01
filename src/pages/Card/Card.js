@@ -9,12 +9,20 @@ import { makeStyles } from "@material-ui/core/styles";
 import { showPathEntries, entriesAreSame } from "../../utils/fileSystem";
 import { FOLDER } from "../../utils/constants";
 import { addEntry, deleteEntry, setEntry } from "../../actions/fileSystem";
+import Axios from "axios";
+import axios from "axios";
+import fileDownload from "js-file-download";
 
 import Icon from "../../components/Icon";
 import Add from "../../components/Add";
 import FolderIcon from "../../assets/img/folder-icon.png";
 import { useTheme } from "../../contexts/themeContext";
 import emptyIcon from "../../assets/img/empty.svg";
+import binIcon from "../../assets/img/bin.svg";
+import closeIcon from "../../assets/img/close.svg";
+import previewFileBg from "../../assets/img/preview_file_bg.svg";
+import previewFileBgGradient from "../../assets/img/preview_file_bg_gradientbar.svg";
+import openExternal from "../../assets/img/open_external.svg";
 
 const useUpgradeStyles = makeStyles((theme) => ({
   paper: {
@@ -63,6 +71,36 @@ const Card = (props) => {
     setPreviewEntry(entry);
   }
 
+  function handleClose() {
+    console.log("close");
+    setOpenFilePreview(false);
+  }
+
+  function handleDownload(entry) {
+    //setLoading(true);
+    axios
+      .request({
+        method: "get",
+        url: `https://api.sarvvid-ai.com/cat?filehash=${
+          entry.name
+        }&IMEI=${localStorage.getItem("IMEI")}&ping=${localStorage.getItem(
+          "ping"
+        )}`,
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          Authtoken: localStorage.getItem("authtoken"),
+          "Content-Type": "application/json",
+        },
+        responseType: "blob",
+      })
+      .then((response) => {
+        //setLoading(false);
+        fileDownload(response.data, entry.name);
+
+        console.log("Download resp...", response);
+      });
+  }
+
   return (
     <div>
       {props.entry[0] ? (
@@ -75,7 +113,12 @@ const Card = (props) => {
           />
 
           {props.entry.map((entry, _) => (
-            <div onClick={()=>{handlePreview(entry)}} style={{ width: "100%" }}>
+            <div
+              onClick={() => {
+                handlePreview(entry);
+              }}
+              style={{ width: "100%" }}
+            >
               <Icon
                 entry={entry}
                 index={_}
@@ -106,34 +149,55 @@ const Card = (props) => {
           className="upgrade_modal"
           style={{ borderRadius: "40px" }}
         >
+          {/*
+              onClick={() => {
+                    setOpenFilePreview(!openFilePreview);
+                  }}*/}
           <div className={classesUpgrade.paper}>
-
             <div className="preview_card">
               <div className="preview_card_header">
-                <div className="preview_card_header_title">{previewEntry.name}</div>
-                <div className="preview_card_header_close" onClick={() => {setOpenFilePreview(!openFilePreview)}}>
-                  {/* <Icon name="close" /> */}
+                <div className="preview_header_icon">
+                  <img src={binIcon} alt="recyclebin" />
+                </div>
+                <div
+                  onClick={() => {
+                    handleClose();
+                  }}
+                  className="preview_header_icon"
+                >
+                  <img src={closeIcon} alt="close" />
                 </div>
               </div>
-              <div className="preview_card_body">
-                <div className="preview_card_body_content">
-                  <div className="preview_card_body_content_image">
-                    <img src={previewEntry.preview} alt="preview" />
+              <div className="preview_file_detail">
+                <div className="file_detail_name">
+                  <div
+                    className="preview_view"
+                    style={{ background: `url(${previewFileBg})` }}
+                  >
+                    <div className="preview_subview_two">
+                      <img src={openExternal} alt="documents" />
+                      <h4>{previewEntry.name.split(".")[1]}</h4>
+                    </div>
                   </div>
-                  <div className="preview_card_body_content_text">
-                    <div className="preview_card_body_content_text_title">{previewEntry.name}</div>
-                    <div className="preview_card_body_content_text_description">{previewEntry.description}</div>
+                  <div className="preview_file_details">
+                    <h4>{previewEntry.name}</h4>
+                    <p>filetype {previewEntry.type}</p>
+                    <p>filesize {previewEntry.size}</p>
+                    <p>Secured with SarvvidBox</p>
+                    <div className="file_details_btn_section">
+                      <button
+                        onClick={() => {
+                          handleDownload(previewEntry);
+                        }}
+                        className="download_btn"
+                      >
+                        Download
+                      </button>
+                      <button className="share_btn">Share</button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="div_upgrade_heading">
-              <p>filename {previewEntry.name}</p>
-              <p>filetype {previewEntry.type}</p>
-              <p>filesize {previewEntry.size}</p>
-            </div>
-            <div className="upgrade_plans_div">
-              <h1 className="upgrade_plans_heading">{previewEntry.name}</h1>
             </div>
           </div>
         </Modal>
